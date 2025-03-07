@@ -1,0 +1,95 @@
+model_parameters:
+  random_forest:
+    n_estimators: 100
+    max_depth: 20
+    min_samples_split: 2
+    min_samples_leaf: 1
+    n_jobs: -1
+    random_state: 42
+
+  lstm:
+    units: 50
+    dropout: 0.2
+    recurrent_dropout: 0.2
+    optimizer: adam
+    epochs: 50
+    batch_size: 32
+    validation_split: 0.2
+    sequence_length: 30
+
+data_paths:
+  train: "data/raw/train.csv"
+  test: "data/raw/test.csv"
+  store: "data/raw/store.csv"
+
+data_preprocessing:
+  missing_values:
+    competition_distance: "median"
+    competition_open_since: 0
+    promo2_since: 0
+    promo_interval: ""
+  
+  outliers:
+    method: "iqr"
+    threshold: 1.5
+  
+  scaling:
+    method: standard
+    features:
+      - competition_distance
+      - sales
+      - customers
+  
+  encoding:
+    method: label
+    features:
+      - store_type
+      - assortment
+      - state_holiday
+
+features:
+  datetime:
+    - weekday
+    - is_weekend
+    - month
+    - year
+    - day_of_month
+    - week_of_year
+  
+  holiday:
+    - days_to_holiday
+    - days_after_holiday
+    - is_holiday_month
+  
+  store:
+    - store_type_encoding
+    - assortment_encoding
+    - competition_distance_scaled
+    - promo_type_encoding
+
+analysis_config:
+  seasonal:
+    monthly: true
+    weekly: true
+    holiday_season: true
+  
+  competition:
+    distance_bins: 5
+    new_competition_threshold: 3  # months
+  
+  promotions:
+    store_type_breakdown: true
+    customer_impact: true
+    sales_per_customer: true
+
+evaluation:
+  metrics:
+    - rmse
+    - mae
+    - mape
+  cv_folds: 5
+  test_size: 0.2
+
+prediction_config:
+  forecast_horizon: 42  # 6 weeks ahead
+  confidence_interval: 0.95 
