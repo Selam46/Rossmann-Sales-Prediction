@@ -1,34 +1,73 @@
 # Rossmann Sales Prediction
 
-This project aims to forecast sales for Rossmann Pharmaceuticals across their stores six weeks ahead of time. The project includes comprehensive data analysis, machine learning modeling, and a production-ready API for serving predictions.
+## Project Overview
+This project analyzes sales data from Rossmann Pharmaceuticals to help the finance team forecast sales across their stores. As a Machine Learning Engineer at Rossmann, we're developing a comprehensive analysis and prediction system.
 
-## Project Structure
+## Current Progress: Exploratory Data Analysis
 
+### Completed Analysis
+1. **Data Loading and Preprocessing**
+   - Implemented robust data loading system
+   - Handled missing values
+   - Created date-based features
+   - Merged store metadata with sales data
+
+2. **Promotion Analysis**
+   - Analyzed promotion distribution in training and test sets
+   - Evaluated promotion effectiveness on sales
+   - Studied customer behavior during promotions
+   - Identified optimal promotion strategies
+
+3. **Sales Patterns**
+   - Analyzed seasonal trends
+   - Studied holiday impact on sales
+   - Investigated correlation between sales and customer numbers
+   - Examined store-specific patterns
+
+4. **Competition Analysis**
+   - Evaluated impact of competitor distance
+   - Analyzed effects of new competitor openings
+   - Studied sales patterns in different competitive environments
+
+### Project Structure
 ```
 ├── src/                  # Source code
-│   ├── data/            # Data processing scripts
-│   ├── features/        # Feature engineering
-│   ├── models/          # ML models implementation
-│   ├── api/             # FastAPI implementation
-│   └── utils/           # Utility functions
-├── notebooks/           # Jupyter notebooks for analysis
-├── data/                # Data directory
+│   └── data/            
+│       ├── data_loader.py    # Data loading and preprocessing
+│       └── analysis_utils.py # Analysis utilities
+├── notebooks/           
+│   └── 01_data_exploration.ipynb  # EDA notebook
+├── data/                
 │   ├── raw/            # Original data
-│   ├── processed/      # Cleaned data
-│   └── features/       # Feature engineered data
-├── models/             # Saved model artifacts
-├── config/             # Configuration files
-├── docs/              # Documentation
-├── tests/             # Unit tests
-└── logs/              # Application logs
+│   └── processed/      # Cleaned data
+├── config/             
+│   ├── model_config.yaml    # Analysis configuration
+│   └── logging_config.yaml  # Logging settings
+└── logs/               # Application logs
 ```
+
+### Key Findings
+1. **Promotion Impact**
+   - Detailed analysis of promotion effectiveness
+   - Distribution comparison between training and test sets
+   - Impact on customer numbers and sales
+
+2. **Seasonal Patterns**
+   - Holiday sales behavior
+   - Weekly and monthly trends
+   - Special event impacts
+
+3. **Store Performance**
+   - Analysis by store type
+   - Impact of competition
+   - Store-specific characteristics
 
 ## Setup and Installation
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/rossmann-sales-prediction.git
-cd rossmann-sales-prediction
+git clone https://github.com/Selam46/rossmann-sales-prediction.git
+cd Rossmann-Sales-Prediction
 ```
 
 2. Create a virtual environment:
@@ -45,52 +84,17 @@ pip install -r requirements.txt
 ## Usage
 
 ### Data Exploration
-- Run notebooks in the `notebooks/` directory sequentially
-- Start with `01_data_exploration.ipynb`
-
-### Training Models
+Run the exploratory analysis notebook:
 ```bash
-python src/models/train_model.py
+jupyter notebook notebooks/01_data_exploration.ipynb
 ```
 
-### Starting the API
-```bash
-uvicorn src.api.app:app --reload
-```
+## Next Steps
+- Implement machine learning models for sales prediction
+- Develop deep learning approach using LSTM
+- Create API for serving predictions
+- Deploy the solution
 
-## API Endpoints
-
-- `POST /predict`: Get sales predictions for stores
-  - Input: JSON with store features
-  - Output: Predicted sales and confidence intervals
-
-## Project Tasks
-
-1. **Data Exploration**
-   - Customer purchasing behavior analysis
-   - Holiday impact analysis
-   - Promotion effectiveness
-   - Competition analysis
-
-2. **Machine Learning Models**
-   - Random Forest implementation
-   - Feature importance analysis
-   - Confidence interval estimation
-
-3. **Deep Learning**
-   - LSTM implementation
-   - Time series analysis
-   - Sales forecasting
-
-4. **API Development**
-   - RESTful API implementation
-   - Model serving
-   - Real-time predictions
-
-## Contributing
-
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
 
 ## License
-
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details 
