@@ -1,24 +1,14 @@
-# Data Processing & Analysis
 numpy
 pandas
 scikit-learn
 scipy
-# Deep Learning
 tensorflow
 torch
-# Visualization
 matplotlib
 seaborn
 plotly
-# API Development
 fastapi
-
-# Model Serialization
 joblib
-
-# Testing
 pytest
-
-
-# Utilities
 python-dotenv
+holidays
